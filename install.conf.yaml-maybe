@@ -1,0 +1,22 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.tmux.conf: tmux.conf
+    ~/.viminfo: viminfo
+    ~/.bashrc: bashrc
+    ~/.config: .config
+    ~/.gitconfig: .gitconfig
+    ~/.profile: .profile
+
+
+- create:
+    - ~/downloads
+    - ~/.vim/undo-history
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
