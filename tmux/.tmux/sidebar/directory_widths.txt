@@ -1,0 +1,3 @@
+/home/ubuntuserver/.tmux/plugins	40
+/home/ubuntuserver	40
+/home/ubuntuserver	40
