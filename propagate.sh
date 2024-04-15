@@ -10,6 +10,9 @@ ln -s ${BASEDIR}/tmux/.tmux ~/.tmux
 ln -s ${BASEDIR}/zsh/.zshrc ~/.zshrc
 
 # oh-my-zsh
+
+brew isntall zsh-autosuggestions
+brew install zsh-syntax-highlighting
 ln -s ${BASEDIR}/oh-my-zsh/.oh-my-zsh ~/.oh-my-zsh
 
 # git
