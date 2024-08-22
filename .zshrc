@@ -34,12 +34,11 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 	)
 
 source $ZSH/oh-my-zsh.sh
-
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # enable thefuck:
 eval $(thefuck --alias)
@@ -48,3 +47,6 @@ eval $(thefuck --alias)
 if [[ -z $TMUX ]] && [[ -n $SSH_TTY ]]; then
     tmux new-session -A -s mysession
 fi
+
+# Created by `pipx` on 2024-08-22 20:00:51
+export PATH="$PATH:/home/user/.local/bin"
