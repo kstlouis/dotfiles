@@ -50,6 +50,8 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::sublime
 zinit snippet OMZP::ssh
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::docker-compose
+zinit snippet OMZP::git-auto-fetch
 
 #Load zsh-completions
 autoload -U compinit && compinit
