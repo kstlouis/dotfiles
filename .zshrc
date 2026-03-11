@@ -106,5 +106,5 @@ eval $(thefuck --alias)
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.toml)"
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.yaml)"
 fi

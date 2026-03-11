@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+secondary_prompt:
+    template: '❯❯ '
+    foreground: '#43D426'
+    background: transparent
+transient_prompt:
+    template: '❯ '
+    background: plain
+    foreground_templates:
+        - '{{if gt .Code 0}}red{{end}}'
+        - '{{if eq .Code 0}}#43D426{{end}}'
+upgrade:
+    source: cdn
+    interval: 168h
+    auto: false
+    notice: true
+console_title_template: '{{ .Shell }} in {{ .Folder }}'
+blocks:
+    - type: rprompt
+      overflow: hidden
+      segments:
+        - options:
+            style: austin
+            threshold: 3000
+          template: ' <#fefefe></> {{ .FormattedMs }} '
+          foreground: yellow
+          type: executiontime
+          style: plain
+    - type: prompt
+      alignment: left
+      segments:
+        - options:
+            style: full
+          template: '{{ .Path }} '
+          foreground: '#77E4F7'
+          background: plain
+          type: path
+          style: plain
+        - options:
+            commit_icon: '@'
+            fetch_status: true
+            fetch_upstream_icon: true
+          template: ' <magenta>{{ .HEAD }}</><yellow>{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}</> <#FFE700>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+          foreground: '#FFE700'
+          type: git
+          style: plain
+      newline: true
+    - type: prompt
+      alignment: left
+      segments:
+        - template: '❯ '
+          type: text
+          style: plain
+          foreground_templates:
+            - '{{if gt .Code 0}}red{{end}}'
+            - '{{if eq .Code 0}}#43D426{{end}}'
+      newline: true
+version: 4
+final_space: true
