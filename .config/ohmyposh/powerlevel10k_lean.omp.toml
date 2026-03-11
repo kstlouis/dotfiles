@@ -9,6 +9,20 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   notice = true
 
 [[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    foreground = 'yellow'
+    style = 'plain'
+    template = " <#fefefe></> {{ .FormattedMs }} "
+
+    [blocks.segments.options]
+      threshold = 3000
+      style = "austin"
+
+[[blocks]]
   type = 'prompt'
   alignment = 'left'
   newline = true
@@ -55,12 +69,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   background = 'plain'
   template = '❯ '
 
-# right block
-[[blocks]]
-  type = 'rprompt'
-
-  [[blocks.segments]]
-#    template = ' {{ .CurrentDate | date .Format }} '
-    foreground = 'yellow'
-    type = 'time'
-    style = 'plain'
+[secondary_prompt]
+  foreground = '#43D426'
+  background = 'transparent'
+  template = '❯❯ '
