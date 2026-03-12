@@ -102,16 +102,16 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 ## 🔔 Dotfiles watcher
 
-Sends a macOS notification when you have uncommitted changes in the repo. Polls every hour; won’t re-notify for 6 hours (at most a few times per day).
+(Optional) Sends a macOS notification when you have uncommitted changes in the repo. Polls every hour; won’t re-notify for 6 hours (at most a few times per day).
 
-<p align="center"><img src="assets/dotfiles-notification.png" width="320" alt="Dotfiles notification"></p>
+<p align="center"><img src="assets/dotfiles-notification.png" width="400" alt="Dotfiles notification"></p>
 
-**Run at login** (optional): After stowing, load the LaunchAgent:
+**Run at login**: After stowing, load the LaunchAgent:
 ```bash
 launchctl load ~/Library/LaunchAgents/com.dotfiles.watch.plist
 ```
 
-To stop: `launchctl unload ~/Library/LaunchAgents/com.dotfiles.watch.plist`
+To stop, use `launchctl unload` instead
 
 ## ➡️ Shell Setup
 
