@@ -96,6 +96,22 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
    - Start tmux and press `Prefix` + <kbd>I</kbd> to install TPM plugins
 
+## Dotfiles watcher
+
+Sends a macOS notification when you have uncommitted changes in the repo. Polls every hour; won’t re-notify for 6 hours (at most a few times per day).
+
+**Run manually:**
+```bash
+~/.dotfiles/scripts/dotfiles-watch.sh
+```
+
+**Run at login** (optional): After stowing, load the LaunchAgent:
+```bash
+launchctl load ~/Library/LaunchAgents/com.dotfiles.watch.plist
+```
+
+To stop: `launchctl unload ~/Library/LaunchAgents/com.dotfiles.watch.plist`
+
 ## Shell Setup
 
 - [**Zinit**](https://github.com/zdharma-continuum/zinit) – Plugin manager; auto-installs on first run
