@@ -18,15 +18,19 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   ├── cli-config.json
 │   └── mcp.json
 ├── Library/
-│   └── Application Support/
-│       └── Cursor/
-│           └── User/
-│               ├── keybindings.json
-│               └── settings.json
+│   ├── Application Support/
+│   │   └── Cursor/
+│   │       └── User/
+│   │           ├── keybindings.json
+│   │           └── settings.json
+│   └── LaunchAgents/
+│       └── com.dotfiles.watch.plist
 ├── .gitconfig
 ├── .p10k.zsh
 ├── .tmux.conf
 ├── .zshrc
+├── scripts/
+│   └── dotfiles-watch.sh
 └── README.md
 ```
 
