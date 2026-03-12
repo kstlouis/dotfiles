@@ -86,7 +86,11 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
    stow .
    ```
 
-   Run from `~/.dotfiles`; this creates symlinks for all config files in your home directory.
+   Stow creates symlinks in your home directory, mirroring the repo's structure. 
+   When running it for the first time, be extra sure that you're in the dotfiles root (`~/.dotfiles`) — stow won’t act on anything above the directory you’re in.
+   
+   > [!NOTE]
+   > Stow does not replace existing files — delete or rename any conflicting dotfiles in your home directory before running stow.
 
 3. Install tmux plugins (after first launch):
 
