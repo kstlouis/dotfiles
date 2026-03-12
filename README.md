@@ -4,14 +4,16 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 
 ## Contents
 
-| File / Dir             | Description                                               |
-|------------------------|-----------------------------------------------------------|
-| `.zshrc`               | Zsh configuration (Zinit, oh-my-posh, fzf, zoxide, etc.) |
-| `.tmux.conf`           | Tmux config with TPM + Nord theme                         |
-| `.gitconfig`           | Git configuration                                         |
-| `.p10k.zsh`            | Powerlevel10k prompt theme                                |
-| `.config/ohmyposh/`    | Oh-my-posh theme configs                                  |
-| `.config/thefuck/`     | The Fuck alias settings                                   |
+| File / Dir                                | Description                                               |
+|-------------------------------------------|-----------------------------------------------------------|
+| `.zshrc`                                  | Zsh configuration (Zinit, oh-my-posh, fzf, zoxide, etc.) |
+| `.tmux.conf`                              | Tmux config with TPM + Nord theme                         |
+| `.gitconfig`                              | Git configuration                                         |
+| `.p10k.zsh`                               | Powerlevel10k prompt theme                                |
+| `.config/ohmyposh/`                       | Oh-my-posh theme configs                                  |
+| `.config/thefuck/`                        | The Fuck alias settings                                   |
+| `Library/Application Support/Cursor/User/`| Cursor IDE settings and keybindings                       |
+| `.cursor/`                                | Cursor MCP and CLI config                                 |
 
 ## Prerequisites
 
