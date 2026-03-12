@@ -4,16 +4,49 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 
 ## Contents
 
-| File / Dir                                | Description                                               |
-|-------------------------------------------|-----------------------------------------------------------|
-| `.zshrc`                                  | Zsh configuration (Zinit, oh-my-posh, fzf, zoxide, etc.) |
-| `.tmux.conf`                              | Tmux config with TPM + Nord theme                         |
-| `.gitconfig`                              | Git configuration                                         |
-| `.p10k.zsh`                               | Powerlevel10k prompt theme                                |
-| `.config/ohmyposh/`                       | Oh-my-posh theme configs                                  |
-| `.config/thefuck/`                        | The Fuck alias settings                                   |
-| `Library/Application Support/Cursor/User/`| Cursor IDE settings and keybindings                       |
-| `.cursor/`                                | Cursor MCP and CLI config                                 |
+```
+.dotfiles/
+├── .config/
+│   ├── ohmyposh/
+│   │   ├── powerlevel10k_lean.omp.toml
+│   │   ├── powerlevel10k_lean.omp.yaml
+│   │   └── zen.toml
+│   └── thefuck/
+│       ├── rules
+│       └── settings.py
+├── .cursor/
+│   ├── cli-config.json
+│   └── mcp.json
+├── Library/
+│   └── Application Support/
+│       └── Cursor/
+│           └── User/
+│               ├── keybindings.json
+│               └── settings.json
+├── .gitconfig
+├── .p10k.zsh
+├── .tmux.conf
+├── .zshrc
+└── README.md
+```
+
+### cursor
+IDE settings, keybindings, MCP config, and CLI config.
+
+### git
+User identity, aliases, and core git configuration.
+
+### oh-my-posh
+Prompt theme configs (powerlevel10k-style and zen).
+
+### zshrc
+Uses oh-my-posh and zinit, plus other goodies (see below).
+
+### tmux
+TPM for plugins, Nord theme.
+
+### the fuck
+Alias correction rules and settings.
 
 ## Prerequisites
 
@@ -61,6 +94,6 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 ## Shell Setup
 
-- **Zinit** – Plugin manager; auto-installs on first run
-- **Oh-my-posh** – Prompt (used in iTerm; skipped in macOS Terminal)
-- **Plugins** – zsh-syntax-highlighting, zsh-autosuggestions, fzf-tab, zoxide, thefuck
+- [**Zinit**](https://github.com/zdharma-continuum/zinit) – Plugin manager; auto-installs on first run
+- [**Oh-my-posh**](https://ohmyposh.dev/) – Prompt (used in iTerm; skipped in macOS Terminal)
+- **Plugins** – [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [fzf-tab](https://github.com/Aloxaf/fzf-tab), [zoxide](https://github.com/ajeetdsouza/zoxide), [thefuck](https://github.com/nvbn/thefuck)
