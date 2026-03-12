@@ -34,25 +34,25 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 └── README.md
 ```
 
-### cursor
+###  cursor
 IDE settings, keybindings, MCP config, and CLI config.
 
-### git
+###  git
 User identity, aliases, and core git configuration.
 
-### oh-my-posh
+###  oh-my-posh
 Prompt theme configs (powerlevel10k-style and zen).
 
-### zshrc
+###  zshrc
 Uses oh-my-posh and zinit, plus other goodies (see below).
 
-### tmux
+###  tmux
 TPM for plugins, Nord theme.
 
-### the fuck
+###  the fuck
 Alias correction rules and settings.
 
-## Prerequisites
+##  Prerequisites
 
 - [Homebrew](https://brew.sh)
 - [GNU Stow](https://www.gnu.org/software/stow/) (`brew install stow`)
@@ -75,7 +75,7 @@ brew install --cask font-hasklug-nerd-font
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 ```
 
-## Installation
+##  Installation
 
 1. Clone the repo:
 
@@ -100,7 +100,7 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
    - Start tmux and press `Prefix` + <kbd>I</kbd> to install TPM plugins
 
-## Dotfiles watcher
+##  Dotfiles watcher
 
 Sends a macOS notification when you have uncommitted changes in the repo. Polls every hour; won’t re-notify for 6 hours (at most a few times per day).
 
@@ -116,7 +116,7 @@ launchctl load ~/Library/LaunchAgents/com.dotfiles.watch.plist
 
 To stop: `launchctl unload ~/Library/LaunchAgents/com.dotfiles.watch.plist`
 
-## Shell Setup
+##  Shell Setup
 
 - [**Zinit**](https://github.com/zdharma-continuum/zinit) – Plugin manager; auto-installs on first run
 - [**Oh-my-posh**](https://ohmyposh.dev/) – Prompt (used in iTerm; skipped in macOS Terminal)
