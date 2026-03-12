@@ -2,4 +2,4 @@
 \.git
 __pycache__
 ^scripts/
-
+^assets/
