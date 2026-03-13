@@ -4,29 +4,22 @@ secondary_prompt:
     template: '❯❯ '
     foreground: '#43D426'
     background: transparent
+
 transient_prompt:
     template: '❯ '
     background: plain
     foreground_templates:
         - '{{if gt .Code 0}}red{{end}}'
         - '{{if eq .Code 0}}#43D426{{end}}'
+
 upgrade:
     source: cdn
     interval: 168h
     auto: false
     notice: true
+
 console_title_template: '{{ .Shell }} in {{ .Folder }}'
 blocks:
-    - type: rprompt
-      overflow: hidden
-      segments:
-        - options:
-            style: austin
-            threshold: 3000
-          template: ' <#fefefe></> {{ .FormattedMs }} '
-          foreground: yellow
-          type: executiontime
-          style: plain
     - type: prompt
       alignment: left
       segments:
@@ -46,6 +39,7 @@ blocks:
           type: git
           style: plain
       newline: true
+      
     - type: prompt
       alignment: left
       segments:
@@ -56,5 +50,16 @@ blocks:
             - '{{if gt .Code 0}}red{{end}}'
             - '{{if eq .Code 0}}#43D426{{end}}'
       newline: true
+
+    - type: rprompt
+      overflow: hidden
+      segments:
+        - options:
+            style: austin
+            threshold: 3000
+          template: ' <#fefefe></> {{ .FormattedMs }} '
+          foreground: yellow
+          type: executiontime
+          style: plain
 version: 4
 final_space: true
