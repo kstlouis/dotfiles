@@ -1,12 +1,10 @@
 # ---- PREREQUISITES ----
 
-# - homebrew
-# - Integrations: brew install fzf zoxide thefuck
-# - Font: nerd font. current choice: brew install --cask font-hasklug-nerd-font
+# Homebrew
 
-# ---- oh-my-posh shell prompt
-
-# brew install jandedobbeleer/oh-my-posh/oh-my-posh
+# brew install fzf zoxide thefuck   # key integrations
+# brew install --cask font-hasklug-nerd-font  # nerd font. dont use mono for icon sizing to work
+# brew install jandedobbeleer/oh-my-posh/oh-my-posh  # OMP shell prompt
 
 # ---- POWERLEVEL10K SHELL PROMPT ----
 
@@ -95,6 +93,9 @@ function xmanpage() {
 }
 alias man="xmanpage"
 # ---- x-man-page END ----
+
+alias omp="oh-my-posh"
+
 
 # Shell Integrations
 eval "$(/opt/homebrew/bin/brew shellenv)"
