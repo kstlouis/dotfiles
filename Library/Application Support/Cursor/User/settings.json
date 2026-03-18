@@ -6,5 +6,6 @@
     "cursor.general.disableHttp2": true,
     "cursor.general.disableHttp1SSE": true,
     "window.autoDetectColorScheme": true,
-    "window.systemColorTheme": "auto"
+    "window.systemColorTheme": "auto",
+    "workbench.preferredDarkColorTheme": "Solarized Dark"
 }
