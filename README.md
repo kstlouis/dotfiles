@@ -96,9 +96,13 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
    > [!NOTE]
    > Stow does not replace existing files — delete or rename any conflicting dotfiles in your home directory before running stow.
 
-3. Install tmux plugins (after first launch):
+3. Install tmux plugins:
 
-   - Start tmux and press `Prefix` + <kbd>I</kbd> to install TPM plugins
+   ```bash
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   ```
+
+   Then start tmux and press `Prefix` + <kbd>I</kbd> to install all plugins.
 
 ## 🔔 Dotfiles watcher
 
