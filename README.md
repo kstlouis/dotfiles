@@ -7,6 +7,8 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 ```
 .dotfiles/
 ├── .config/
+│   ├── bat/
+│   │   └── config
 │   ├── ohmyposh/
 │   │   ├── powerlevel10k_lean.omp.toml
 │   │   ├── powerlevel10k_lean.omp.yaml
@@ -49,6 +51,9 @@ Uses oh-my-posh and zinit, plus other goodies (see below).
 ### ➗ tmux
 TPM for plugins, Nord theme.
 
+### 🦇 bat
+Nord theme config.
+
 ### 😤 the fuck
 Alias correction rules and settings.
 
@@ -60,7 +65,7 @@ Alias correction rules and settings.
 ### Integrations
 
 ```bash
-brew install fzf zoxide thefuck
+brew install fzf zoxide thefuck bat
 ```
 
 ### Font (for oh-my-posh)
