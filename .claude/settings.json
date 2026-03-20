@@ -1,4 +1,5 @@
 {
+  "env": { "DISABLE_AUTOUPDATER": "1" },
   "spinnerVerbs": { "mode": "replace", "verbs": ["working"] },
   "includeCoAuthoredBy": false,
   "statusLine": {
