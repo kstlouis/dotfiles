@@ -62,6 +62,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
+function help() { "$@" --help 2>&1 | bat -plman }
 alias cat='bat --style=numbers'
 
 # ---- x-man-page START ----
