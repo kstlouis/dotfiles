@@ -72,7 +72,7 @@ Alias correction rules and settings.
 ### Integrations
 
 ```bash
-brew install fzf zoxide thefuck bat
+brew install fzf thefuck bat
 ```
 
 ### Font (for oh-my-posh)
@@ -136,4 +136,4 @@ launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.dotfiles.watch.plist
 
 - [**Zinit**](https://github.com/zdharma-continuum/zinit) – Plugin manager; auto-installs on first run
 - [**Oh-my-posh**](https://ohmyposh.dev/) – Prompt (used in iTerm; skipped in macOS Terminal)
-- **Plugins** – [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [fzf-tab](https://github.com/Aloxaf/fzf-tab), [zoxide](https://github.com/ajeetdsouza/zoxide), [thefuck](https://github.com/nvbn/thefuck)
+- **Plugins** – [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [fzf-tab](https://github.com/Aloxaf/fzf-tab), [thefuck](https://github.com/nvbn/thefuck)

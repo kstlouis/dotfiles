@@ -19,8 +19,9 @@ cwd=$(echo "$input" | jq -r '.cwd // ""')
 lines_added=$(echo "$input" | jq -r '.cost.total_lines_added // 0')
 lines_removed=$(echo "$input" | jq -r '.cost.total_lines_removed // 0')
 
-# Git branch
+# Git branch + remote URL for clickable link
 branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
+remote=$(git -C "$cwd" remote get-url origin 2>/dev/null | sed 's/git@github.com:/https:\/\/github.com\//' | sed 's/\.git$//')
 
 # Context icon and colour based on usage (icon and colour thresholds are independent)
 if [ "$ctx_pct" -ge 75 ]; then
@@ -47,11 +48,18 @@ out="${frost_blue}󱚝  ${gray_light}${model}${reset}"
 out+="  ${ctx_color}${ctx_icon}  ${ctx_pct}%${reset}"
 
 if [ -n "$branch" ]; then
-  out+="  ${aurora_purple}󰘬  ${aurora_purple}${branch}${reset}"
+  if [ -n "$remote" ] && git -C "$cwd" rev-parse --verify "origin/${branch}" &>/dev/null; then
+    branch_link="\e]8;;${remote}/tree/${branch}\a${branch}\e]8;;\a"
+  elif [ -n "$remote" ]; then
+    branch_link="\e]8;;${remote}\a${branch}\e]8;;\a"
+  else
+    branch_link="${branch}"
+  fi
+  out+="  ${aurora_purple}󰘬  ${aurora_purple}${branch_link}${reset}"
 fi
 
 if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
   out+="  ${aurora_green}+${lines_added}${reset} ${aurora_red}-${lines_removed}${reset}"
 fi
 
-echo -e "$out"
+printf '%b\n' "$out"
