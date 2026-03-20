@@ -1,16 +1,25 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
+# Nord palette
+x-colors:
+    frost_cyan:     &frost_cyan     "#88C0D0"
+    frost_blue:     &frost_blue     "#81A1C1"
+    aurora_purple:  &aurora_purple  "#B48EAD"
+    aurora_yellow:  &aurora_yellow  "#EBCB8B"
+    aurora_green:   &aurora_green   "#A3BE8C"
+    aurora_red:     &aurora_red     "#BF616A"
+
 secondary_prompt:
     template: '❯❯ '
-    foreground: '#43D426'
+    foreground: *aurora_green
     background: transparent
 
 transient_prompt:
     template: '❯ '
     background: plain
     foreground_templates:
-        - '{{if gt .Code 0}}red{{end}}'
-        - '{{if eq .Code 0}}#43D426{{end}}'
+        - '{{if gt .Code 0}}#BF616A{{end}}'
+        - '{{if eq .Code 0}}#A3BE8C{{end}}'
 
 upgrade:
     source: cdn
@@ -23,23 +32,29 @@ blocks:
     - type: prompt
       alignment: left
       segments:
+        - template: '{{ if .SSHSession }}󰒋{{ else }}󱩊{{ end }} {{ .UserName }}@{{ .HostName }} '
+          type: session
+          style: plain
+          foreground: *frost_blue
+          background: transparent
         - options:
             style: full
-          template: '{{ .Path }} '
-          foreground: '#77E4F7'
-          background: plain
+          template: '󰝰 {{ .Path }} '
+          foreground: *frost_cyan
+          background: transparent
           type: path
           style: plain
         - options:
             commit_icon: '@'
+            branch_icon: '󰘬 '
             fetch_status: true
             fetch_upstream_icon: true
-          template: ' <magenta>{{ .HEAD }}</><yellow>{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}</> <#FFE700>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
-          foreground: '#FFE700'
+          template: ' <#B48EAD>{{ .HEAD }}</><#EBCB8B>{{ if or (.Working.Changed) (.Working.Untracked) }} 󰄦{{ end }}{{ if .Staging.Changed }} 󰂚{{ end }}</> <#EBCB8B>{{ if gt .Behind 0 }}󰁅{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }}󰁝{{ .Ahead }}{{ end }}</>'
+          foreground: *aurora_yellow
           type: git
           style: plain
       newline: true
-      
+
     - type: prompt
       alignment: left
       segments:
@@ -47,8 +62,8 @@ blocks:
           type: text
           style: plain
           foreground_templates:
-            - '{{if gt .Code 0}}red{{end}}'
-            - '{{if eq .Code 0}}#43D426{{end}}'
+            - '{{if gt .Code 0}}#BF616A{{end}}'
+            - '{{if eq .Code 0}}#A3BE8C{{end}}'
       newline: true
 
     - type: rprompt
@@ -57,8 +72,8 @@ blocks:
         - options:
             style: austin
             threshold: 3000
-          template: ' <#fefefe></> {{ .FormattedMs }} '
-          foreground: yellow
+          template: ' <#D8DEE9></> {{ .FormattedMs }} '
+          foreground: *aurora_yellow
           type: executiontime
           style: plain
 version: 4
