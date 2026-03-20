@@ -49,6 +49,7 @@ blocks:
             branch_icon: '󰘬 '
             fetch_status: true
             fetch_upstream_icon: true
+          # inline colors: #B48EAD = aurora_purple, #EBCB8B = aurora_yellow
           template: ' <#B48EAD>{{ .HEAD }}</><#EBCB8B>{{ if or (.Working.Changed) (.Working.Untracked) }} 󰄦{{ end }}{{ if .Staging.Changed }} 󰂚{{ end }}</> <#EBCB8B>{{ if gt .Behind 0 }}󰁅{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }}󰁝{{ .Ahead }}{{ end }}</>'
           foreground: *aurora_yellow
           type: git
