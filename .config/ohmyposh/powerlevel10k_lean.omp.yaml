@@ -32,7 +32,7 @@ blocks:
     - type: prompt
       alignment: left
       segments:
-        - template: '{{ if .SSHSession }}󰒋{{ else }}󱩊{{ end }} {{ .UserName }}@{{ .HostName }} '
+        - template: '{{ if .SSHSession }}󰒋{{ else }}󱩊{{ end }} {{ .UserName }}@{{ .HostName }}  '
           type: session
           style: plain
           foreground: *frost_blue
