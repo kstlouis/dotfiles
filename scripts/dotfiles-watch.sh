@@ -22,7 +22,7 @@ while true; do
   behind=$(git rev-list --count HEAD..@{u} 2>/dev/null)
 
   parts=()
-  [[ -n "$uncommitted" ]] && parts+=("uncommitted changes")
+  [[ -n "$uncommitted" ]] && parts+=("Uncommitted changes")
   [[ -n "$ahead" && "$ahead" -gt 0 ]] && parts+=("$ahead unpushed $(plural "$ahead" commit)")
   [[ -n "$behind" && "$behind" -gt 0 ]] && parts+=("$behind unpulled $(plural "$behind" commit)")
 
@@ -38,7 +38,7 @@ while true; do
           [[ -n "$msg" ]] && msg+=", "
           msg+="$part"
         done
-        msg+=" in .dotfiles"
+        msg+=" in .dotfiles."
       fi
       osascript -e "display notification \"$msg\" with title \"Dotfiles\""
       echo "$NOW" > "$NOTIFY_FILE"
