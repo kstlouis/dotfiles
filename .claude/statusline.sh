@@ -22,6 +22,8 @@ lines_removed=$(echo "$input" | jq -r '.cost.total_lines_removed // 0')
 # Git branch + remote URL for clickable link
 branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
 remote=$(git -C "$cwd" remote get-url origin 2>/dev/null | sed 's/git@github.com:/https:\/\/github.com\//' | sed 's/\.git$//')
+ahead=$(git -C "$cwd" rev-list --count @{u}..HEAD 2>/dev/null)
+behind=$(git -C "$cwd" rev-list --count HEAD..@{u} 2>/dev/null)
 
 # Context icon and colour based on usage (icon and colour thresholds are independent)
 if [ "$ctx_pct" -ge 75 ]; then
@@ -56,6 +58,8 @@ if [ -n "$branch" ]; then
     branch_link="${branch}"
   fi
   out+="  ${aurora_purple}󰘬  ${aurora_purple}${branch_link}${reset}"
+  [ "${ahead:-0}" -gt 0 ] && out+=" ${aurora_green}󰁝${ahead}${reset}"
+  [ "${behind:-0}" -gt 0 ] && out+=" ${aurora_yellow}󰁅${behind}${reset}"
 fi
 
 if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
