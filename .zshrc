@@ -1,20 +1,3 @@
-# ---- PREREQUISITES ----
-
-# Homebrew
-
-# brew install fzf zoxide thefuck   # key integrations
-# brew install --cask font-hasklug-nerd-font  # nerd font. dont use mono for icon sizing to work
-# brew install jandedobbeleer/oh-my-posh/oh-my-posh  # OMP shell prompt
-
-# ---- POWERLEVEL10K SHELL PROMPT ----
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
 # ---- ZINIT ----
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -39,10 +22,7 @@ zinit light-mode for \
 
 # ---- ZINIT END ----
 
-# Add in zsh prompt (powerlevel10k)
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# Add in zsh plugins 
+# Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -101,12 +81,11 @@ alias omp="oh-my-posh"
 # Shell Integrations
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval $(thefuck --alias)
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(thefuck --alias)"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.yaml)"
 fi
+
+# zoxide must be last
+eval "$(zoxide init --cmd cd zsh)"
