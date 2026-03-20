@@ -58,8 +58,8 @@ if [ -n "$branch" ]; then
     branch_link="${branch}"
   fi
   out+="  ${aurora_purple}󰘬  ${aurora_purple}${branch_link}${reset}"
-  [ "${ahead:-0}" -gt 0 ] && out+=" ${aurora_green}󰁝${ahead}${reset}"
-  [ "${behind:-0}" -gt 0 ] && out+=" ${aurora_yellow}󰁅${behind}${reset}"
+  [ "${ahead:-0}" -gt 0 ] && out+=" ${aurora_green}󱦲${ahead}${reset}"
+  [ "${behind:-0}" -gt 0 ] && out+=" ${aurora_yellow}󱦳${behind}${reset}"
 fi
 
 if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
