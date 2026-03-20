@@ -16,6 +16,10 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   └── thefuck/
 │       ├── rules
 │       └── settings.py
+├── .claude/
+│   ├── settings.json
+│   ├── settings.local.json
+│   └── statusline.sh
 ├── .cursor/
 │   ├── cli-config.json
 │   └── mcp.json
@@ -35,6 +39,9 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   └── dotfiles-watch.sh
 └── README.md
 ```
+
+### 🤖 claude code
+Settings, permissions, and a Nord-themed status line script.
 
 ### 💻 cursor
 IDE settings, keybindings, MCP config, and CLI config.

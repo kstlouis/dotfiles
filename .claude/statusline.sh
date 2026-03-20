@@ -1,0 +1,57 @@
+#!/bin/bash
+# Claude Code status line - Nord theme
+
+input=$(cat)
+
+# Nord palette (24-bit ANSI)
+frost_blue='\033[38;2;129;161;193m'
+aurora_purple='\033[38;2;180;142;173m'
+aurora_green='\033[38;2;163;190;140m'
+aurora_yellow='\033[38;2;235;203;139m'
+aurora_red='\033[38;2;191;97;106m'
+gray_light='\033[38;2;216;222;233m'
+reset='\033[0m'
+
+# Parse JSON
+model=$(echo "$input" | jq -r '.model.display_name // .model.id // "unknown"')
+ctx_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+cwd=$(echo "$input" | jq -r '.cwd // ""')
+lines_added=$(echo "$input" | jq -r '.cost.total_lines_added // 0')
+lines_removed=$(echo "$input" | jq -r '.cost.total_lines_removed // 0')
+
+# Git branch
+branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
+
+# Context icon and colour based on usage (icon and colour thresholds are independent)
+if [ "$ctx_pct" -ge 75 ]; then
+  ctx_icon="󰡴"
+elif [ "$ctx_pct" -ge 50 ]; then
+  ctx_icon="󰊚"
+elif [ "$ctx_pct" -ge 25 ]; then
+  ctx_icon="󰡵"
+else
+  ctx_icon="󰡳"
+fi
+
+if [ "$ctx_pct" -ge 90 ]; then
+  ctx_color=$aurora_red
+elif [ "$ctx_pct" -ge 50 ]; then
+  ctx_color=$aurora_yellow
+else
+  ctx_color=$aurora_green
+fi
+
+# Build output
+out="${frost_blue}󱚝  ${gray_light}${model}${reset}"
+
+out+="  ${ctx_color}${ctx_icon}  ${ctx_pct}%${reset}"
+
+if [ -n "$branch" ]; then
+  out+="  ${aurora_purple}󰘬  ${aurora_purple}${branch}${reset}"
+fi
+
+if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
+  out+="  ${aurora_green}+${lines_added}${reset} ${aurora_red}-${lines_removed}${reset}"
+fi
+
+echo -e "$out"
