@@ -1,0 +1,21 @@
+#!/bin/bash
+# Shows elapsed time for the currently running command in the active tmux pane.
+# Called from tmux status-right; reads a timestamp written by zsh preexec hook.
+
+pane_id=$(tmux display-message -p '#{pane_id}' 2>/dev/null)
+start_file="/tmp/tmux_timer_${pane_id}"
+
+[ -f "$start_file" ] || exit 0
+
+start=$(cat "$start_file")
+elapsed=$(( $(date +%s) - start ))
+
+[ $elapsed -ge 3 ] || exit 0
+
+if [ $elapsed -ge 3600 ]; then
+    printf "󰅐 %dh%dm " $(( elapsed / 3600 )) $(( (elapsed % 3600) / 60 ))
+elif [ $elapsed -ge 60 ]; then
+    printf "󰅐 %dm%ds " $(( elapsed / 60 )) $(( elapsed % 60 ))
+else
+    printf "󰅐 %ds " $elapsed
+fi

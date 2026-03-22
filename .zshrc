@@ -78,6 +78,20 @@ alias man="xmanpage"
 
 alias omp="oh-my-posh"
 
+# ---- Dotfiles bin ----
+export PATH="$HOME/.dotfiles/bin:$PATH"
+
+# ---- Tmux command timer ----
+autoload -Uz add-zsh-hook
+function _tmux_timer_start() {
+  [[ -n $TMUX ]] && date +%s > /tmp/tmux_timer_${TMUX_PANE}
+}
+function _tmux_timer_stop() {
+  [[ -n $TMUX ]] && rm -f /tmp/tmux_timer_${TMUX_PANE}
+}
+add-zsh-hook preexec _tmux_timer_start
+add-zsh-hook precmd _tmux_timer_stop
+
 
 # Shell Integrations
 eval "$(/opt/homebrew/bin/brew shellenv)"
