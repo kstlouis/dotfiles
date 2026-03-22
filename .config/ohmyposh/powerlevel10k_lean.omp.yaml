@@ -31,7 +31,12 @@ console_title_template: '{{ .Shell }} in {{ .Folder }}'
 blocks:
     - type: prompt
       alignment: left
+      newline: true
       segments:
+        - template: '╭─'
+          type: text
+          style: plain
+          foreground: darkGray
         - template: '{{ if .SSHSession }}󰒋{{ else }}󱩊{{ end }} {{ .UserName }}@{{ .HostName }}  '
           type: session
           style: plain
@@ -54,28 +59,59 @@ blocks:
           foreground: *aurora_yellow
           type: git
           style: plain
-      newline: true
+
+    - type: prompt
+      alignment: right
+      segments:
+        - options:
+            style: austin
+            threshold: 3000
+          template: '󰅐 {{ .FormattedMs }} '
+          foreground: *aurora_yellow
+          type: executiontime
+          style: plain
+        - type: docker
+          style: plain
+          foreground: *frost_blue
+          template: ' {{ .Context }} '
+        - type: battery
+          style: plain
+          foreground: darkGray
+          foreground_templates:
+            - '{{ if eq .State.String "Discharging" }}{{ if lt .Percentage 20 }}#BF616A{{ else if lt .Percentage 50 }}#EBCB8B{{ end }}{{ else if lt .Percentage 5 }}#BF616A{{ end }}'
+          template: ' {{ if eq .State.String "Discharging" }}{{ if gt .Percentage 90 }}󰁹{{ else if gt .Percentage 80 }}󰂁{{ else if gt .Percentage 60 }}󰁿{{ else if gt .Percentage 40 }}󰁽{{ else if gt .Percentage 20 }}󰁻{{ else }}󱃍{{ end }}{{ else }}{{ if eq .State.String "Full" }}󰂅{{ else if gt .Percentage 80 }}󰂊{{ else if gt .Percentage 60 }}󰂉{{ else if gt .Percentage 40 }}󰂈{{ else if gt .Percentage 20 }}󰂆{{ else if gt .Percentage 5 }}󰢜{{ else }}󱃍{{ end }}{{ end }} {{ .Percentage }}%'
+        - type: text
+          style: plain
+          foreground: darkGray
+          template: ' ─╮'
+
+    - type: rprompt
+      overflow: hidden
+      segments:
+        - type: text
+          style: plain
+          foreground_templates:
+            - '{{if gt .Code 0}}#BF616A{{end}}'
+            - '{{if eq .Code 0}}#A3BE8C{{end}}'
+          template: '{{if gt .Code 0}}✘ {{ .Code }}{{else}}✔{{end}} '
+        - type: text
+          style: plain
+          foreground: darkGray
+          template: '─╯'
 
     - type: prompt
       alignment: left
+      newline: true
       segments:
+        - template: '╰─'
+          type: text
+          style: plain
+          foreground: darkGray
         - template: '❯ '
           type: text
           style: plain
           foreground_templates:
             - '{{if gt .Code 0}}#BF616A{{end}}'
             - '{{if eq .Code 0}}#A3BE8C{{end}}'
-      newline: true
-
-    - type: rprompt
-      overflow: hidden
-      segments:
-        - options:
-            style: austin
-            threshold: 3000
-          template: ' <#D8DEE9></> {{ .FormattedMs }} '
-          foreground: *aurora_yellow
-          type: executiontime
-          style: plain
 version: 4
 final_space: true
