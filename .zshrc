@@ -99,6 +99,6 @@ eval "$(fzf --zsh)"
 eval "$(thefuck --alias)"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.yaml)"
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/nord-clean.omp.yaml)"
 fi
 

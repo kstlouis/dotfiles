@@ -58,7 +58,7 @@ if [ -n "$branch" ]; then
     branch_link="${branch}"
   fi
   out+="  ${aurora_purple}󰘬  ${aurora_purple}${branch_link}${reset}"
-  [ "${ahead:-0}" -gt 0 ] && out+=" ${aurora_green}󱦲${ahead}${reset}"
+  [ "${ahead:-0}" -gt 0 ] && out+=" ${aurora_yellow}󱦲${ahead}${reset}"
   [ "${behind:-0}" -gt 0 ] && out+=" ${aurora_yellow}󱦳${behind}${reset}"
 fi
 

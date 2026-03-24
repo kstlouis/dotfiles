@@ -1,0 +1,164 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+# Cyberpunk 2077 palette — no theme package required
+x-colors:
+    neon_yellow:    &neon_yellow    "#FCEE09"
+    electric_cyan:  &electric_cyan  "#00F0FF"
+    hot_magenta:    &hot_magenta    "#FF2079"
+    neon_orange:    &neon_orange    "#FF6B2B"
+    street_red:     &street_red     "#FF0040"
+    night_city:     &night_city     "#0D0221"
+    corp_shadow:    &corp_shadow    "#1A0A2E"
+    netrunner:      &netrunner      "#2D0B3E"
+
+secondary_prompt:
+    template: '»» '
+    foreground: *neon_yellow
+    background: transparent
+
+transient_prompt:
+    template: ' '
+    background: transparent
+    foreground_templates:
+        - '{{if gt .Code 0}}#FF0040{{end}}'
+        - '{{if eq .Code 0}}#FCEE09{{end}}'
+
+upgrade:
+    source: cdn
+    interval: 168h
+    auto: false
+    notice: true
+
+console_title_template: '{{ .Shell }} in {{ .Folder }}'
+
+blocks:
+    - type: prompt
+      alignment: left
+      newline: true
+      segments:
+        # Pixel fade-in on left edge
+        - template: ''
+          type: text
+          style: plain
+          foreground: *neon_yellow
+          background: transparent
+
+        - template: ''
+          type: text
+          style: plain
+          foreground: transparent
+          background: *neon_yellow
+
+        # Left side — flat start at left edge
+        - template: ' {{ if .SSHSession }}󰒋{{ else }}󱩊{{ end }} {{ .UserName }}@{{ .HostName }} '
+          type: session
+          style: diamond
+          leading_diamond: ''
+          trailing_diamond: ''
+          foreground: *night_city
+          background: *neon_yellow
+
+        - template: ' 󰝰 {{ .Path }} '
+          type: path
+          style: powerline
+          powerline_symbol: ''
+          foreground: *electric_cyan
+          background: *corp_shadow
+          options:
+            style: full
+
+        - template: ' <#FCEE09>{{ if contains "github.com" .UpstreamURL }}󰊤 {{ end }}󰘬 {{ .HEAD }}</><#FF6B2B>{{ if or .Working.Changed .Working.Untracked }} ✦{{ end }}</><#00F0FF>{{ if .Staging.Changed }} ✚{{ end }}</><#FF6B2B>{{ if gt .Behind 0 }} ⇣{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} ⇡{{ .Ahead }}{{ end }}</> '
+          type: git
+          style: powerline
+          powerline_symbol: ''
+          foreground: *hot_magenta
+          background: *netrunner
+          options:
+            branch_icon: ''
+            commit_icon: '@'
+            fetch_status: true
+            fetch_upstream_icon: true
+
+        # Pixel fade-out on right edge of git block
+        - template: ''
+          type: text
+          style: plain
+          foreground: transparent
+          background: *netrunner
+
+        # # Connection line fill
+        # - template: '═'
+        #   type: fill
+        #   style: plain
+        #   background: transparent
+        #   foreground: *neon_yellow
+
+        # # Right side — left-pointing chevrons, visually mirrors left
+        # - options:
+        #     style: austin
+        #     threshold: 3000
+        #   template: ' 󰅐 {{ .FormattedMs }} '
+        #   type: executiontime
+        #   style: powerline
+        #   powerline_symbol: ''
+        #   foreground: *neon_orange
+        #   background: *corp_shadow
+
+        # - type: docker
+        #   style: powerline
+        #   powerline_symbol: ''
+        #   foreground: *electric_cyan
+        #   background: *night_city
+        #   template: '  {{ .Context }} '
+
+        # - type: battery
+        #   style: powerline
+        #   powerline_symbol: ''
+        #   foreground: *neon_yellow
+        #   background: *netrunner
+        #   foreground_templates:
+        #     - '{{ if eq .State.String "Discharging" }}{{ if lt .Percentage 20 }}#FF0040{{ else if lt .Percentage 50 }}#FF6B2B{{ end }}{{ else if lt .Percentage 5 }}#FF0040{{ end }}'
+        #   template: ' {{ if eq .State.String "Discharging" }}{{ if gt .Percentage 90 }}󰁹{{ else if gt .Percentage 80 }}󰂁{{ else if gt .Percentage 60 }}󰁿{{ else if gt .Percentage 40 }}󰁽{{ else if gt .Percentage 20 }}󰁻{{ else }}󱃍{{ end }}{{ else }}{{ if eq .State.String "Full" }}󰂅{{ else if gt .Percentage 80 }}󰂊{{ else if gt .Percentage 60 }}󰂉{{ else if gt .Percentage 40 }}󰂈{{ else if gt .Percentage 20 }}󰂆{{ else if gt .Percentage 5 }}󰢜{{ else }}󱃍{{ end }}{{ end }} {{ .Percentage }}%'
+
+        # Prompt character — color reflects last exit code
+        # - template: '❯'
+        #   type: text
+        #   style: plain
+        #   foreground_templates:
+        #     - '{{if gt .Code 0}}#FF0040{{end}}'
+        #     - '{{if eq .Code 0}}#FCEE09{{end}}'
+
+
+    - type: prompt
+      alignment: right
+      segments:
+        - options:
+            style: austin
+            threshold: 3000
+          template: ' 󰅐 {{ .FormattedMs }} '
+          type: executiontime
+          style: diamond
+          leading_diamond: ''
+          trailing_diamond: ''
+          foreground: *neon_orange
+          background: *corp_shadow
+
+        - type: docker
+          style: diamond
+          leading_diamond: ''
+          trailing_diamond: ''
+          foreground: *electric_cyan
+          background: *night_city
+          template: '  {{ .Context }} '
+
+        - type: battery
+          style: diamond
+          leading_diamond: ''
+          trailing_diamond: ''
+          foreground: *neon_yellow
+          background: *netrunner
+          foreground_templates:
+            - '{{ if eq .State.String "Discharging" }}{{ if lt .Percentage 20 }}#FF0040{{ else if lt .Percentage 50 }}#FF6B2B{{ end }}{{ else if lt .Percentage 5 }}#FF0040{{ end }}'
+          template: ' {{ if eq .State.String "Discharging" }}{{ if gt .Percentage 90 }}󰁹{{ else if gt .Percentage 80 }}󰂁{{ else if gt .Percentage 60 }}󰁿{{ else if gt .Percentage 40 }}󰁽{{ else if gt .Percentage 20 }}󰁻{{ else }}󱃍{{ end }}{{ else }}{{ if eq .State.String "Full" }}󰂅{{ else if gt .Percentage 80 }}󰂊{{ else if gt .Percentage 60 }}󰂉{{ else if gt .Percentage 40 }}󰂈{{ else if gt .Percentage 20 }}󰂆{{ else if gt .Percentage 5 }}󰢜{{ else }}󱃍{{ end }}{{ end }} {{ .Percentage }}%'
+version: 4
+final_space: true
