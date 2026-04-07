@@ -10,8 +10,9 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   ├── bat/
 │   │   └── config
 │   ├── ohmyposh/
-│   │   ├── powerlevel10k_lean.omp.toml
-│   │   ├── powerlevel10k_lean.omp.yaml
+│   │   ├── cyberpunk2077.omp.json
+│   │   ├── cyberpunk2077.omp.yaml
+│   │   ├── nord-clean.omp.yaml
 │   │   └── zen.toml
 │   └── thefuck/
 │       ├── rules
@@ -23,6 +24,8 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 ├── .cursor/
 │   ├── cli-config.json
 │   └── mcp.json
+├── bin/
+│   └── tmux-cmd-timer
 ├── Library/
 │   ├── Application Support/
 │   │   └── Cursor/
@@ -50,13 +53,16 @@ IDE settings, keybindings, MCP config, and CLI config.
 User identity, aliases, and core git configuration.
 
 ### ✨ oh-my-posh
-Prompt theme configs (powerlevel10k-style and zen).
+Prompt theme configs (Nord-clean, Cyberpunk 2077, and zen).
 
 ### 🐚 zshrc
 Uses oh-my-posh and zinit, plus other goodies (see below).
 
 ### ➗ tmux
 TPM for plugins, Nord theme.
+
+### 🔧 bin
+Custom scripts on `$PATH`. Currently: `tmux-cmd-timer`.
 
 ### 🦇 bat
 Nord theme config.

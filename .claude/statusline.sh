@@ -18,6 +18,7 @@ ctx_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d.
 cwd=$(echo "$input" | jq -r '.cwd // ""')
 lines_added=$(echo "$input" | jq -r '.cost.total_lines_added // 0')
 lines_removed=$(echo "$input" | jq -r '.cost.total_lines_removed // 0')
+total_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
 
 # Git branch + remote URL for clickable link
 branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
@@ -64,6 +65,13 @@ fi
 
 if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
   out+="  ${aurora_green}+${lines_added}${reset} ${aurora_red}-${lines_removed}${reset}"
+fi
+
+# Session cost (only shown when cost > 0)
+cost_nonzero=$(echo "$total_cost" | awk '{print ($1 > 0) ? "1" : "0"}')
+if [ "$cost_nonzero" = "1" ]; then
+  cost_fmt=$(printf '%.2f' "$total_cost")
+  out+="  ${aurora_yellow}  \$${cost_fmt}${reset}"
 fi
 
 printf '%b\n' "$out"
