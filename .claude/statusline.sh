@@ -18,7 +18,8 @@ ctx_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d.
 cwd=$(echo "$input" | jq -r '.cwd // ""')
 lines_added=$(echo "$input" | jq -r '.cost.total_lines_added // 0')
 lines_removed=$(echo "$input" | jq -r '.cost.total_lines_removed // 0')
-total_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
+total_in=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
+total_out=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
 
 # Git branch + remote URL for clickable link
 branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
@@ -67,11 +68,20 @@ if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
   out+="  ${aurora_green}+${lines_added}${reset} ${aurora_red}-${lines_removed}${reset}"
 fi
 
-# Session cost (only shown when cost > 0)
-cost_nonzero=$(echo "$total_cost" | awk '{print ($1 > 0) ? "1" : "0"}')
-if [ "$cost_nonzero" = "1" ]; then
-  cost_fmt=$(printf '%.2f' "$total_cost")
-  out+="  ${aurora_yellow}  \$${cost_fmt}${reset}"
+# Session tokens (only shown when there's been at least one API call)
+if [ "$total_in" -gt 0 ] || [ "$total_out" -gt 0 ]; then
+  # Format with K suffix for thousands
+  fmt_tokens() {
+    local n=$1
+    if [ "$n" -ge 1000 ]; then
+      printf '%.1fk' "$(echo "$n" | awk '{printf "%.1f", $1/1000}')"
+    else
+      printf '%d' "$n"
+    fi
+  }
+  in_fmt=$(fmt_tokens "$total_in")
+  out_fmt=$(fmt_tokens "$total_out")
+  out+="  ${aurora_yellow}↓${in_fmt}${reset}${gray_light} ${reset}${aurora_purple}↑${out_fmt}${reset}"
 fi
 
 printf '%b\n' "$out"

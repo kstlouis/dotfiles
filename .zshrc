@@ -102,3 +102,7 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/nord-clean.omp.yaml)"
 fi
 
+
+alias gam="/Users/kellan/bin/gam7/gam"
+
+export PATH="$HOME/bin:$PATH"
