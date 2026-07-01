@@ -15,11 +15,9 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   │   ├── nord-clean.omp.yaml
 │   │   └── zen.toml
 │   └── thefuck/
-│       ├── rules
 │       └── settings.py
 ├── .claude/
 │   ├── settings.json
-│   ├── settings.local.json
 │   └── statusline.sh
 ├── .cursor/
 │   ├── cli-config.json
@@ -35,9 +33,12 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   └── LaunchAgents/
 │       └── com.dotfiles.watch.plist
 ├── .gitconfig
-├── .p10k.zsh
+├── .gitignore
+├── .stow-local-ignore
 ├── .tmux.conf
 ├── .zshrc
+├── assets/
+│   └── dotfiles-notification.png
 ├── scripts/
 │   └── dotfiles-watch.sh
 └── README.md
