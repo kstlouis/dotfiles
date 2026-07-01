@@ -9,6 +9,10 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 ├── .config/
 │   ├── bat/
 │   │   └── config
+│   ├── gh/
+│   │   └── config.yml
+│   ├── git/
+│   │   └── ignore
 │   ├── ohmyposh/
 │   │   ├── cyberpunk2077.omp.json
 │   │   ├── cyberpunk2077.omp.yaml
@@ -20,7 +24,6 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 │   ├── settings.json
 │   └── statusline.sh
 ├── .cursor/
-│   ├── cli-config.json
 │   └── mcp.json
 ├── bin/
 │   └── tmux-cmd-timer
@@ -48,10 +51,10 @@ Personal configuration for zsh, tmux, git, oh-my-posh, and related tools. Uses [
 Settings, permissions, and a Nord-themed status line script.
 
 ### 💻 cursor
-IDE settings, keybindings, MCP config, and CLI config.
+IDE settings, keybindings, and MCP config.
 
 ### 🔀 git
-User identity, aliases, and core git configuration.
+User identity, aliases, core git configuration, and a global ignore file. Also GitHub CLI (`gh`) preferences.
 
 ### ✨ oh-my-posh
 Prompt theme configs (Nord-clean, Cyberpunk 2077, and zen).
