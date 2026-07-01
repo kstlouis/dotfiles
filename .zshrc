@@ -63,7 +63,13 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # Aliases
 alias ls='ls --color'
 function help() { "$@" --help 2>&1 | bat -plman }
-alias cat='bat --style=numbers'
+cat() {
+  if [[ -t 1 ]]; then
+    command bat --style=numbers "$@"
+  else
+    command cat "$@"
+  fi
+}
 
 # ---- x-man-page START ----
 function xmanpage() {
@@ -106,3 +112,12 @@ fi
 alias gam="/Users/kellan/bin/gam7/gam"
 
 export PATH="$HOME/bin:$PATH"
+
+
+# Added by amplify
+export PATH="$HOME/.local/bin:$PATH"
+
+# Pre-warm 1Password CLI session before launching Claude Code, so the parallel
+# MCP `op run` / `op read` launches (okta, rootly, jamf) share one auth instead
+# of each firing its own biometric prompt. One prompt at most, not three.
+alias claude='op read "op://Employee/Jamf MCP/url" --account=jobber-team.1password.com >/dev/null 2>&1; command claude'
