@@ -8,12 +8,6 @@
     },
     "atlassian-rovo": {
       "url": "https://mcp.atlassian.com/v1/mcp"
-    },
-    "Jobber Jira": {
-      "url": "http://mcp:23021/mcp/jira"
-    },
-    "Jobber Confluence": {
-      "url": "http://mcp:23021/mcp/confluence"
     }
   }
 }
