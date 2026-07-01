@@ -9,9 +9,7 @@
     "command": "~/.claude/statusline.sh",
     "padding": 2
   },
-  "enabledPlugins": {
-    "slack@claude-plugins-official": true
-  },
+  "enabledPlugins": {},
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
       "source": {
@@ -117,5 +115,8 @@
       "󰟢 Ship-of-Theseusing"
     ]
   },
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "awaySummaryEnabled": false,
+  "tui": "fullscreen",
+  "theme": "dark-ansi"
 }
